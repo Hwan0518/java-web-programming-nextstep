@@ -1,4 +1,4 @@
-package kdh.jwpnextstep;
+package kdh.jwpnextstep.calculator;
 
 /**
  * 요구사항
@@ -17,22 +17,22 @@ public class Calculator {
      */
 
     // 1. 덧셈
-    int add(int i, int j) {
+    public int add(int i, int j) {
         return i + j;
     }
 
     // 2. 뺄셈
-    int subtract(int i, int j) {
+    public int subtract(int i, int j) {
         return i - j;
     }
 
     // 3. 곱셈
-    int multiply(int i, int j) {
+    public int multiply(int i, int j) {
         return i * j;
     }
 
     // 4. 나눗셈
-    int divide(int i, int j) {
+    public int divide(int i, int j) {
         return i / j;
     }
 
