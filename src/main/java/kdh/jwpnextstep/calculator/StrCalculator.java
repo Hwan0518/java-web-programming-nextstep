@@ -2,7 +2,7 @@ package kdh.jwpnextstep.calculator;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 public interface StrCalculator {
     /**
@@ -17,7 +17,7 @@ public interface StrCalculator {
     int summation(int[] intArray);
 
     // 2. 구분자 구하기 : 입력 문자열에서 구분자를 구함
-    ArrayList<String> getSeparator(String inputString);
+    List getSeparator(String inputString);
 
     // 3. 구분자로 입력 문자열 split
     String[] splitString(String inputString, ArrayList<String> separators);
