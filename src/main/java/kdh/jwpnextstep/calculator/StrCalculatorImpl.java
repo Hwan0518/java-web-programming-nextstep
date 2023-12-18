@@ -69,9 +69,15 @@ public class StrCalculatorImpl implements StrCalculator{
     // 4. 배열 원소들을 int로 변환
     @Override
     public int[] changeElements(String[] separatedString) {
+        boolean isInNegative = false;
         int[] intArray = Arrays.stream(separatedString)
                 .mapToInt(Integer::parseInt)
+                .filter(n->n>0)
                 .toArray();
+        // intArray크기와 separatedString 크기가 같지 않다면 음수가 포함되어 있으므로 예외처리
+        if (intArray.length != separatedString.length) {
+            throw new RuntimeException("음수가 포함되어 있습니다");
+        }
         return intArray;
     }
 
@@ -86,7 +92,7 @@ public class StrCalculatorImpl implements StrCalculator{
     public int strCalculator() throws IOException {
         // 문자열 입력받음
 //        String input = inputString();
-        String input = "//;\\n1,2;3:4";
+        String input = "//;;\\n1,2;;3:4";
         // 입력받은 문자열에서 구분자와 실제 계산에 필요한 부분 문자열만을 구함
         List data = getSeparator(input);
         ArrayList<String> separators = (ArrayList<String>) data.get(0);
