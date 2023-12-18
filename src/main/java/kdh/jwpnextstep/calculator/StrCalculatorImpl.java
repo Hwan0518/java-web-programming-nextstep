@@ -59,9 +59,12 @@ public class StrCalculatorImpl implements StrCalculator{
         for (String sp : separators) {
             inputString = inputString.replaceAll(sp, ":");
         }
+        // 문자열에서, 빈 문자나 null을 0으로 바꾼다
+        inputString = inputString.replaceAll(" ", "0");
+        inputString = inputString.replaceAll("null", "0");
         // 문자열을 :로 나눈다
         separatedString = inputString.split(":");
-        // 분리된 문자열을 return
+
         return separatedString;
     }
 
@@ -72,7 +75,7 @@ public class StrCalculatorImpl implements StrCalculator{
         boolean isInNegative = false;
         int[] intArray = Arrays.stream(separatedString)
                 .mapToInt(Integer::parseInt)
-                .filter(n->n>0)
+                .filter(n->n>=0)
                 .toArray();
         // intArray크기와 separatedString 크기가 같지 않다면 음수가 포함되어 있으므로 예외처리
         if (intArray.length != separatedString.length) {

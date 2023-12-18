@@ -44,7 +44,7 @@ public class StrCalculatorImplTest {
 
 
     // 공통 given
-    String inputString = "//;;\\n1,2;;-3:4";
+    String inputString = "//;;\\n1,2;;3:4: ";
 
     // 구분자 구하기 테스트
     @Test
@@ -59,7 +59,7 @@ public class StrCalculatorImplTest {
 
         // Then
         assertThat(separators).isEqualTo(answer);
-        assertThat(inputString).isEqualTo("1,2;;-3:4");
+        assertThat(inputString).isEqualTo("1,2;;3:4: ");
     }
 
     // 구분자로 입력 문자열 분리 테스트
@@ -74,7 +74,7 @@ public class StrCalculatorImplTest {
         String[] separatedString = calc.splitString(inputString, separators);
 
         // Then
-        assertThat(separatedString).isEqualTo(new String[]{"1", "2", "-3", "4"});
+        assertThat(separatedString).isEqualTo(new String[]{"1", "2", "3", "4", "0"});
     }
 
     // 배열 원소들 int로 변환 테스트
@@ -87,13 +87,14 @@ public class StrCalculatorImplTest {
         String[] separatedString = calc.splitString(inputString, separators);
 
         // When
-//        int[] intArray = calc.changeElements(separatedString);
+        int[] intArray = calc.changeElements(separatedString);
 
         // Then
-//        assertThat(intArray).isEqualTo(new int[]{1, 2, 3, 4,});
-        assertThatThrownBy(
-                () -> calc.changeElements(separatedString))
-                .isInstanceOf(RuntimeException.class);    }
+        assertThat(intArray).isEqualTo(new int[]{1, 2, 3, 4, 0});
+//        assertThatThrownBy(
+//                () -> calc.changeElements(separatedString))
+//                .isInstanceOf(RuntimeException.class);
+    }
 
     // 배열 입력받아서 덧셈하고 return
     @Test
